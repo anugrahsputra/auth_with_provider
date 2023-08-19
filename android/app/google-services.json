@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505887009939",
+    "project_id": "auth-try-c7a06",
+    "storage_bucket": "auth-try-c7a06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505887009939:android:457a3a152851078d5cf166",
+        "android_client_info": {
+          "package_name": "com.example.auth_with_provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505887009939-kluo4jttrs9209dq9hsqa4kk4amigo7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcKMwnQyA6PaLVeuOIwZFRQktx1GZjcGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505887009939-kluo4jttrs9209dq9hsqa4kk4amigo7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
