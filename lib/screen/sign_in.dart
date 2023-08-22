@@ -1,4 +1,5 @@
 import 'package:auth_with_provider/providers/auth_provider.dart';
+import 'package:auth_with_provider/screen/sign_up.dart';
 import 'package:auth_with_provider/screen/widget/auth_loading_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,7 @@ class _SignInState extends State<SignIn> {
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
-                                            context.goNamed('sign_up');
+                                            context.push(SignUp.routeName);
                                           },
                                       ),
                                       TextSpan(

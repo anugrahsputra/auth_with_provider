@@ -3,12 +3,13 @@ import 'package:auth_with_provider/providers/auth_provider.dart';
 import 'package:auth_with_provider/screen/home_screen.dart';
 import 'package:auth_with_provider/screen/sign_in.dart';
 import 'package:auth_with_provider/screen/sign_up.dart';
+import 'package:auth_with_provider/screen/splash_screen.dart';
 import 'package:auth_with_provider/screen/widget/auth_loading_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: SplashScreen.routeName,
   routes: [
     GoRoute(
       name: 'app',
@@ -35,6 +36,11 @@ final router = GoRouter(
       name: 'auth_loading',
       path: AuthLoading.routeName,
       builder: (context, state) => const AuthLoading(),
+    ),
+    GoRoute(
+      name: 'splash',
+      path: SplashScreen.routeName,
+      builder: (context, state) => const SplashScreen(),
     ),
   ],
 );

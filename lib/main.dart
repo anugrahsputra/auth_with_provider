@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-  static const String routeName = '/';
+  static const String routeName = '/app';
 
   @override
   Widget build(BuildContext context) {
