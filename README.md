@@ -14,6 +14,3 @@ This is a simple Flutter project that demonstrates how to use Firebase Authentic
 - [ ] Add Google Sign In
 - [ ] Add Phone Authentication
 
-### Contribute
-If you have any suggestions or find a bug or want to add something, feel free to open an issue or create a pull request.
-
