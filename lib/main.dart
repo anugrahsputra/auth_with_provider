@@ -1,5 +1,6 @@
 import 'package:auth_with_provider/constant/router.dart';
 import 'package:auth_with_provider/providers/auth_provider.dart';
+import 'package:auth_with_provider/providers/memo_provider.dart';
 import 'package:auth_with_provider/providers/user_list_provider.dart';
 import 'package:auth_with_provider/screen/home_screen.dart';
 import 'package:auth_with_provider/screen/sign_in.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<UsersListProvider>(
           create: (_) => UsersListProvider(),
-        )
+        ),
+        ChangeNotifierProvider<MemoProvider>(create: (_) => MemoProvider())
       ],
       child: MaterialApp.router(
         routerConfig: router,

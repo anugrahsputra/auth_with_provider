@@ -1,6 +1,7 @@
 import 'package:auth_with_provider/main.dart';
 import 'package:auth_with_provider/models/user/user.dart';
 import 'package:auth_with_provider/providers/auth_provider.dart';
+import 'package:auth_with_provider/screen/create_memo_screen.dart';
 import 'package:auth_with_provider/screen/detail_user_screen.dart';
 import 'package:auth_with_provider/screen/home_screen.dart';
 import 'package:auth_with_provider/screen/sign_in.dart';
@@ -53,6 +54,11 @@ final router = GoRouter(
         final UserModel? user = state.extra as UserModel?;
         return Detail(id: id, user: user);
       },
+    ),
+    GoRoute(
+      name: 'create-memo',
+      path: '/create-memo',
+      builder: (context, state) => CreateMemoScreen(),
     ),
   ],
 );
