@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class Detail extends StatelessWidget {
   const Detail({super.key, required this.user, required this.id});
+  static const routeName = '/detail:id';
   final String? id;
   final UserModel? user;
 

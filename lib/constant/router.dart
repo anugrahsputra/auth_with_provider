@@ -15,33 +15,34 @@ final router = GoRouter(
   routes: [
     GoRoute(
       name: 'app',
-      path: App.routeName,
+      path: '/app',
       builder: (context, state) => const App(),
     ),
     GoRoute(
       name: 'sign_in',
-      path: SignIn.routeName,
+      path: '/sign_in',
       builder: (context, state) => const SignIn(),
     ),
     GoRoute(
       name: 'sign_up',
-      path: SignUp.routeName,
+      path: '/sign_up',
       builder: (context, state) => const SignUp(),
     ),
     GoRoute(
-      name: 'home',
-      path: Homescreen.routeName,
-      builder: (context, state) =>
-          Homescreen(user: Provider.of<AuthProvider>(context).user),
-    ),
+        name: 'home',
+        path: '/home',
+        builder: (context, state) {
+          final user = Provider.of<AuthProvider>(context).user;
+          return Homescreen(user: user);
+        }),
     GoRoute(
       name: 'auth_loading',
-      path: AuthLoading.routeName,
+      path: '/auth_loading',
       builder: (context, state) => const AuthLoading(),
     ),
     GoRoute(
       name: 'splash',
-      path: SplashScreen.routeName,
+      path: '/',
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
