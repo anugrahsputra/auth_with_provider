@@ -1,4 +1,4 @@
-import 'package:auth_with_provider/models/user.dart';
+import 'package:auth_with_provider/models/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class UsersListProvider with ChangeNotifier {
 
   Stream<List<UserModel>> get usersStream {
     return _firestore.collection('users').snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) => UserModel.fromMap(doc)).toList();
+      return snapshot.docs.map((doc) => UserModel.fromJson(doc)).toList();
     });
   }
 
@@ -18,7 +18,7 @@ class UsersListProvider with ChangeNotifier {
     try {
       final snapshot = await _firestore.collection('users').get();
       _users.clear();
-      _users.addAll(snapshot.docs.map((doc) => UserModel.fromMap(doc)));
+      _users.addAll(snapshot.docs.map((doc) => UserModel.fromJson(doc)));
       notifyListeners();
     } catch (error) {
       debugPrint('Error getting users: $error');

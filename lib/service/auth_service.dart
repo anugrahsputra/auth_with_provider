@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:auth_with_provider/models/user.dart';
+import 'package:auth_with_provider/models/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -92,7 +92,7 @@ class AuthService {
             avatar:
                 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png');
 
-        await _firestore.collection('users').doc(user.id).set(user.toMap());
+        await _firestore.collection('users').doc(user.id).set(user.toJson());
 
         return user;
       }

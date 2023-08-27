@@ -1,4 +1,4 @@
-import 'package:auth_with_provider/models/user.dart';
+import 'package:auth_with_provider/models/user/user.dart';
 import 'package:auth_with_provider/providers/auth_provider.dart';
 import 'package:auth_with_provider/providers/user_list_provider.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +80,11 @@ class Homescreen extends StatelessWidget {
                                   itemCount: users.length,
                                   itemBuilder: (context, index) {
                                     return ListTile(
+                                      onTap: () {
+                                        context.push(
+                                            '/detail/${users[index].id}',
+                                            extra: users[index]);
+                                      },
                                       leading: CircleAvatar(
                                         backgroundImage:
                                             NetworkImage(users[index].avatar),

@@ -1,14 +1,16 @@
-import 'package:auth_with_provider/models/user.dart';
+import 'package:auth_with_provider/models/user/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthProvider with ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth auth;
+  final FirebaseFirestore firestore;
 
   UserModel _user = const UserModel(id: '', email: '', name: '', avatar: '');
+
+  AuthProvider({required this.auth, required this.firestore});
 
   UserModel get user => _user;
 
@@ -40,14 +42,14 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> geUserDetails(User user) async {
     final DocumentSnapshot<Map<String, dynamic>> snap =
-        await _firestore.collection('users').doc(user.uid).get();
-    _user = UserModel.fromMap(snap);
+        await firestore.collection('users').doc(user.uid).get();
+    _user = UserModel.fromJson(snap);
   }
 
   Future<void> refreshUser() async {
     try {
-      if (_auth.currentUser != null) {
-        await geUserDetails(_auth.currentUser!);
+      if (auth.currentUser != null) {
+        await geUserDetails(auth.currentUser!);
         _user = user;
         _id = user.id;
         _email = user.email;
@@ -74,7 +76,7 @@ class AuthProvider with ChangeNotifier {
       setLoading(true);
       if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
         UserCredential userCredential =
-            await _auth.createUserWithEmailAndPassword(
+            await auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
@@ -89,10 +91,10 @@ class AuthProvider with ChangeNotifier {
           avatar: avatar,
         );
 
-        await _firestore
+        await firestore
             .collection('users')
             .doc(id)
-            .set(newUser.toMap(), SetOptions(merge: true));
+            .set(newUser.toJson(), SetOptions(merge: true));
 
         _user = newUser;
         notifyListeners();
@@ -124,10 +126,9 @@ class AuthProvider with ChangeNotifier {
     try {
       setLoading(true);
       if (email.isNotEmpty && password.isNotEmpty) {
-        await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-        if (_auth.currentUser != null) {
-          await geUserDetails(_auth.currentUser!);
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+        if (auth.currentUser != null) {
+          await geUserDetails(auth.currentUser!);
         }
 
         notifyListeners();
@@ -152,7 +153,7 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> signOut() async {
     try {
-      await _auth.signOut();
+      await auth.signOut();
       notifyListeners();
     } catch (error) {
       rethrow;
